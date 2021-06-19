@@ -8,7 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   enteredText: any;
-  plans : string[] = [];
+  plans : string[] = [ 'temp', 'hello', 'world' ];
   editMode = false;
   editingItem: any;
 
@@ -17,8 +17,8 @@ export class AppComponent {
     this.enteredText = "";
 }
 
-removeItem(i: number){
-  this.plans.splice(i,1);
+removeItem(id: number){
+  this.plans.splice(id ,1);
 }
 
 onEdit(){

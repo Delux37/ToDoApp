@@ -1,15 +1,24 @@
-<div>
-    <h1>Hello and welcome</h1>
-    <p>Please input your plans for today</p>
-    
-    <input type="text" [(ngModel)] = "enteredText"/>
-    <button class="submit" *ngIf="!editMode" (click)="onSubmit()">Submit</button>
-    <button class="submit" *ngIf="editMode" (click)="onEdit()">Edit</button>
-
-    <ul>
-        <to-do-list 
-        *ngFor="let plan of plans; let i = index"
-        [plan] = plan
-        ></to-do-list>
-    </ul>
+<div class="container">
+  <div class="header">
+    <div class="header__title">
+      <h1>Hello and welcome</h1>
+      <p>Please input your plans for today</p>
+    </div>
+    <div class="header__input">
+      <input type="text" placeholder="Enter your plans" [(ngModel)]="enteredText" />
+      <button class="submit" *ngIf="!editMode" (click)="onSubmit()">
+        Submit
+      </button>
+      <button class="submit" *ngIf="editMode" (click)="onEdit()">Edit</button>
+    </div>
+  </div>
+  <ul class="list-container">
+    <to-do-list
+      *ngFor="let plan of plans; let i = index"
+      [plan]="plan"
+      [id]="i"
+      (onRemove)="removeItem($event)"
+      (onEdit)="editItem($event)"
+    ></to-do-list>
+  </ul>
 </div>
